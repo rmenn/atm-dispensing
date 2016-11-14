@@ -1,0 +1,25 @@
+{{ template "header.html" . }}
+<h1>{{.payload.Location}}</h1>
+
+<div class="panel panel-default col-sm-6" style="padding-left:10px;">
+    <form class="form" action="/atm/validate/{{.payload.Id}}" method="POST">
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type=text class="form-control" id=id name=id placeholder={{.payload.Id}} readonly=readonly>
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type=text class="form-control" id=location name=location placeholder={{.payload.Location}} readonly=readonly>
+        </div>
+        <div class="form-group">
+            <label for="bank">Bank</label>
+            <input type=text class="form-control" id=bank name=bank placeholder={{.payload.City}} readonly=readonly>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type=text class="form-control" id=city name=city placeholder={{.payload.Bank}} readonly=readonly>
+        </div>
+        <button type=submit class="btn btn-primary">Validate</button>
+    </form>
+</div>
+{{ template "footer.html" . }}
