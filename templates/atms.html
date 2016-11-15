@@ -17,16 +17,23 @@
       <td>{{.Location}}</td>
       <td>{{.Bank}}</td>
       <td>{{.City}}</td>
-      <td>{{.UpdatedAt}}</td>
+      <td><time class='atm--updated-at' data-value='{{.UpdatedAt}}'>{{.UpdatedAt}}</time></td>
   </tr>
   {{end}}
     </tbody>
 </table>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function($) {
     $(".clickable-row").click(function() {
         window.document.location = $(this).data("href");
+    });
+
+    // Make time displayed relative
+    $('.atm--updated-at').each(function(){
+      var time = $(this).data('value');
+      $(this).html(moment(time, 'YYYY-MM-DD HH:mm:ss Z').fromNow());
     });
 });
 </script>
