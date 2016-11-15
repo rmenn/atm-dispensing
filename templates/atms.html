@@ -1,8 +1,8 @@
 {{ template "header.html" .}}
 <h2>Add ATMS which are dispensing cash</h2>
 <p>Entries are sorted by the time stamp of people validating, so if it works please click validate</p>
-<div class="container">
 
+<div class="container atm--listing">
   <input class="search" results=5 placeholder="Search..." name='q' autofocus />
 
   <table class="table table-bordered">
@@ -20,7 +20,7 @@
       <td>{{.Location}}</td>
       <td>{{.Bank}}</td>
       <td>{{.City}}</td>
-      <td>{{.UpdatedAt}}</td>
+      <td><time class='atm--updated-at' data-value='{{.UpdatedAt}}'>{{.UpdatedAt}}</time></td>
   </tr>
   {{end}}
     </tbody>
@@ -28,6 +28,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
 <script>
 $(document).ready(function($) {
     // make table searchable
@@ -36,11 +37,16 @@ $(document).ready(function($) {
     $(".clickable-row").click(function() {
         window.document.location = $(this).data("href");
     });
+
+    // Make time displayed relative
+    $('.atm--updated-at').each(function(){
+      var time = $(this).data('value');
+      $(this).html(moment(time, 'YYYY-MM-DD HH:mm:ss Z').fromNow());
+    });
 });
 </script>
 
 <style type="text/css">
-
 .clickable-row{
     cursor:pointer;
 }
