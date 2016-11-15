@@ -2,6 +2,9 @@
 <h2>Add ATMS which are dispensing cash</h2>
 <p>Entries are sorted by the time stamp of people validating, so if it works please click validate</p>
 <div class="container">
+
+  <input class="search" results=5 placeholder="Search..." name='q' autofocus />
+
   <table class="table table-bordered">
       <thead>
           <tr>
@@ -23,8 +26,13 @@
     </tbody>
 </table>
 </div>
-<script type="text/javascript">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.min.js"></script>
+<script>
 $(document).ready(function($) {
+    // make table searchable
+    $('input.search').quicksearch('table tbody tr');
+
     $(".clickable-row").click(function() {
         window.document.location = $(this).data("href");
     });
