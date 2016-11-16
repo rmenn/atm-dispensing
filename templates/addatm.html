@@ -4,7 +4,7 @@
 
 <div class="panel panel-default col-sm-6">
   <div class="panel-body">
-    <form class="form" action="/atm/add" method="POST">
+    <form class="form" action="/atm/add" name="add_atm_form" method="POST">
       <div class="form-group">
         <label for="location">Location</label>
         <input type="text" class="form-control" id="location" name="location" placeholder="location">
@@ -17,10 +17,32 @@
         <label for="city">City</label>
         <input type="city" class="form-control" id="city" name="city" placeholder="City">
       </div>
-      <button type="submit" class="btn btn-primary">Add</button>
+      <input type="button" onclick="addatm_check()" class="btn btn-primary" value="Add">
     </form>
   </div>
 </div>  
+<script>
+
+/**
+ * Checks if Location, City and Bank textfields are filled, 
+ * Else doesn't submits the form 
+ */
+function addatm_check()
+{
+	
+	var location=document.getElementById('location').value;
+	var city=document.getElementById('city').value;
+	var bank=document.getElementById('bank').value;
+
+	if(location!="" && city!="" && bank!="")
+	{
+		alert("hey2");		
+		document.forms["add_atm_form"].submit();
+	}
+	alert("hey3");
+}
+
+</script>
 
 
 {{ template "footer.html" .}}
