@@ -1,4 +1,7 @@
 {{ template "header.html" . }}
+
+<div class="container">
+
 <h1>{{.payload.Location}}</h1>
 
 <div class="panel panel-default col-sm-6" style="padding-left:10px;">
@@ -22,4 +25,7 @@
         <button type=submit class="btn btn-primary">Validate</button>
     </form>
 </div>
+
+</div>
+
 {{ template "footer.html" . }}

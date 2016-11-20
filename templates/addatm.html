@@ -1,26 +1,30 @@
 {{ template "header.html" . }}
+
+<div class="conatiner">
+
 <h1>Add</h1>
 
 
-<div class="panel panel-default col-sm-6">
-  <div class="panel-body">
-    <form class="form" action="/atm/add" method="POST">
-      <div class="form-group">
-        <label for="location">Location</label>
-        <input type="text" class="form-control" id="location" name="location" placeholder="location">
-      </div>
-      <div class="form-group">
-        <label for="bank">Bank</label>
-        <input type="bank" class="form-control" id="bank" name="bank" placeholder="Bank">
-      </div>
-      <div class="form-group">
-        <label for="city">City</label>
-        <input type="city" class="form-control" id="city" name="city" placeholder="City">
-      </div>
-      <button type="submit" class="btn btn-primary">Add</button>
-    </form>
-  </div>
-</div>  
+<div class="panel panel-default col-sm-6" ng-controller="addAtmController">
+	<div class="panel-body">
+		<form class="form" name="newAtmForm" action="/atm/add" method="POST">
+		  <div class="form-group">
+			<label for="location">Location</label>
+			<input type="text" class="form-control" ng-model="location" id="location" name="location" placeholder="location" required>
+		  </div>
+		  <div class="form-group">
+			<label for="bank">Bank</label>
+			<input type="bank" class="form-control" ng-model="bank" id="bank" name="bank" placeholder="Bank" required>
+		  </div>
+		  <div class="form-group">
+			<label for="city">City</label>
+			<input type="city" class="form-control" ng-model="city" id="city" name="city" placeholder="City" required>
+		  </div>
+		  <button type="submit" ng-disabled="newAtmForm.$invalid" class="btn btn-primary">Add</button>
+		</form>
+	</div>
+</div>
 
+</div>
 
 {{ template "footer.html" .}}

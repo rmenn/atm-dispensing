@@ -1,9 +1,13 @@
 {{ template "header.html" .}}
-<h2>Add ATMS which are dispensing cash</h2>
-<p>Entries are sorted by the time stamp of people validating, so if it works please click validate</p>
 
 <div class="container atm--listing">
-  <input class="search" results=5 placeholder="Search..." name='q' autofocus />
+
+	<h2>Add ATMS which are dispensing cash</h2>
+	<p class="alert alert-info">Entries are sorted by the time stamp of people validating, so if it works please click validate</p>
+
+	<div id="search-wrapper" class="pull-right">
+		<input class="search" results=5 placeholder="Search..." name='q' autofocus />
+	</div>
 
   <table class="table table-bordered">
       <thead>
